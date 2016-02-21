@@ -48,8 +48,6 @@ Acknowledgements
 [![HPC Garage logo](https://github.com/Maratyszcza/PeachPy/blob/master/logo/hpcgarage.png)](http://hpcgarage.org)
 [![Georgia Tech College of Computing logo](https://github.com/Maratyszcza/PeachPy/blob/master/logo/college-of-computing.gif)](http://www.cse.gatech.edu/)
 
-This work is a research project at the HPC Garage lab in the Georgia Institute of Technology, College of Computing, School of Computational Science and Engineering.
+The library was developed by [Marat Dukhan](http://www.maratdukhan.com) as a research project at [Richard Vuduc](http://vuduc.org)'s HPC Garage lab in the Georgia Institute of Technology, College of Computing, School of Computational Science and Engineering. FPplus is based on algorithms in [Handbook of Floating-Point Arithmetics](https://www.springer.com/us/book/9780817647049), [David Bailey](http://davidhbailey.com/)'s QD library, the works of [Jonathan Shewchuk](http://www.cs.berkeley.edu/~jrs/papers/robustr.pdf), [Theodorus Dekker](https://dl.acm.org/citation.cfm?id=2717032), [Donald Knuth](https://dl.acm.org/citation.cfm?id=270146), and [Sylvie Boldo and Jean-Michel Muller](http://www.ens-lyon.fr/LIP/Pub/Rapports/RR/RR2004/RR2004-41.pdf). We thank [Jason Riedy](http://www.cc.gatech.edu/~jriedy) for his feedback and support.
 
-This material is based upon work supported by the U.S. National Science Foundation (NSF) Award Number 1339745 and the U.S. Dept. of Energy (DOE), Office of Science, Advanced Scientific Computing Research under award DE-FC02-10ER26006/DE-SC0004915.
-
-Any opinions, findings and conclusions or recommendations expressed in this material are those of the authors and do not necessarily reflect those of NSF or DOE.
+This material is based upon work supported by the U.S. National Science Foundation (NSF) Award Number 1339745 and the U.S. Dept. of Energy (DOE), Office of Science, Advanced Scientific Computing Research under award DE-FC02-10ER26006/DE-SC0004915. Any opinions, findings and conclusions or recommendations expressed in this material are those of the authors and do not necessarily reflect those of NSF or DOE.
