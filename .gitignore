@@ -1,0 +1,27 @@
+*.o
+*.d
+*.pyc
+
+# Binaries
+bin/
+build/
+
+# Generated files
+doc/
+src/ddgemm/ddgemm.h
+src/ddgemm/ddgemm-avx.c
+src/ddgemm/ddgemm-mic.c
+test/ddgemm.cpp
+test/dot.cpp
+src/dot/dot.h
+src/dot/dot-avx.c
+src/dot/dot-mic.c
+
+# Ninja files
+.ninja_deps
+.ninja_log
+build.ninja
+
+# System files
+.DS_Store
+.Rhistory
