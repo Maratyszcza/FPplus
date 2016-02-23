@@ -59,7 +59,7 @@ FPPLUS_STATIC_INLINE double addre(double a, double b) {
 #endif /* IBM VSX */
 
 #if defined(__ARM_ARCH_8A__)
-	FPPLUS_STATIC_INLINE flaot64x1_t vaddre_f64(flaot64x1_t a, flaot64x1_t) {
+	FPPLUS_STATIC_INLINE float64x1_t vaddre_f64(float64x1_t a, float64x1_t) {
 		return vmin_f64(a, b);
 	}
 
