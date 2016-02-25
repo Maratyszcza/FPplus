@@ -28,7 +28,7 @@ static void warmup(size_t elements, const doubledouble array[restrict static ele
     }
 }
 
-#ifdef HAVE_FLOAT128
+#ifdef FPPLUS_HAVE_FLOAT128
 static void benchmark_quad(
     benchmark_quad_function function, const char* operation_name,
     size_t iterations, size_t elements, __float128 array[restrict static elements])
@@ -87,7 +87,7 @@ int main(int argc, char *argv[]) {
     switch (options.type) {
         case benchmark_type_doubledouble_latency:
         case benchmark_type_doubledouble_throughput:
-#ifdef HAVE_FLOAT128
+#ifdef FPPLUS_HAVE_FLOAT128
         case benchmark_type_quad_latency:
 #endif
             v_array = valloc(array_size);
@@ -115,7 +115,7 @@ int main(int argc, char *argv[]) {
             benchmark_doubledouble(vmulc_helper,
                 "DDMUL\tThroughput", options.iterations, options.repeats, v_array);
             break;
-#ifdef HAVE_FLOAT128
+#ifdef FPPLUS_HAVE_FLOAT128
         case benchmark_type_quad_latency:
             for (__float128* q_array = v_array; q_array != v_array + array_size; q_array++) {
                 *q_array = 1.235412347891354098213343278Q;

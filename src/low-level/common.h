@@ -7,7 +7,7 @@ extern "C" {
 #include <stddef.h>
 #include <math.h>
 #include <fpplus.h>
-#ifdef HAVE_FLOAT128
+#ifdef FPPLUS_HAVE_FLOAT128
 #include <quadmath.h>
 #endif
 
@@ -16,7 +16,7 @@ enum benchmark_type {
 	benchmark_type_none = 0,
 	benchmark_type_doubledouble_latency,
 	benchmark_type_doubledouble_throughput,
-#ifdef HAVE_FLOAT128
+#ifdef FPPLUS_HAVE_FLOAT128
 	benchmark_type_quad_latency,
 #endif
 	benchmark_type_polevl_latency,
@@ -68,7 +68,7 @@ struct benchmark_options parse_options(int argc, char** argv);
 	}
 #endif
 
-#ifdef HAVE_FLOAT128
+#ifdef FPPLUS_HAVE_FLOAT128
 	/* Benchmarks of quad-precision operations */
 	typedef __float128 (*benchmark_quad_function)(size_t, const __float128*restrict);
 

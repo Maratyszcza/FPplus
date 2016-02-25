@@ -12,7 +12,7 @@ static void print_options_help(const char* program_name) {
 "  -t   --type         The type of benchmark:\n"
 "                          doubledouble-latency\n"
 "                          doubledouble-throughput\n"
-#ifdef HAVE_FLOAT128
+#ifdef FPPLUS_HAVE_FLOAT128
 "                          quad-latency\n"
 #endif
 "                          polevl-latency\n"
@@ -38,7 +38,7 @@ struct benchmark_options parse_options(int argc, char** argv) {
 				options.type = benchmark_type_doubledouble_latency;
 			} else if (strcmp(argv[argi + 1], "doubledouble-throughput") == 0) {
 				options.type = benchmark_type_doubledouble_throughput;
-#ifdef HAVE_FLOAT128
+#ifdef FPPLUS_HAVE_FLOAT128
 			} else if (strcmp(argv[argi + 1], "quad-latency") == 0) {
 				options.type = benchmark_type_quad_latency;
 #endif
