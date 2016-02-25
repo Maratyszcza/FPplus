@@ -223,8 +223,7 @@ FPPLUS_STATIC_INLINE __m128dd _mm_setzero_pdd(void) {
 FPPLUS_STATIC_INLINE __m128dd _mm_broadcast_sdd(
 	const doubledouble FPPLUS_NONNULL_POINTER(pointer))
 {
-	const __m128d number = _mm_loadu_pd(&pointer->hi);
-	return (__m128dd) { _mm_movedup_pd(number), _mm_unpackhi_pd(number, number) };
+	return (__m128dd) { _mm_loaddup_pd(&pointer->hi), _mm_loaddup_pd(&pointer->lo) };
 }
 
 FPPLUS_STATIC_INLINE __m128dd _mm_loaddeinterleave_pdd(
@@ -373,8 +372,7 @@ FPPLUS_STATIC_INLINE __m256dd _mm256_setzero_pdd(void) {
 FPPLUS_STATIC_INLINE __m256dd _mm256_broadcast_sdd(
 	const doubledouble FPPLUS_NONNULL_POINTER(pointer))
 {
-	const __m256d number = _mm256_broadcast_pd((const __m128d*) pointer);
-	return (__m256dd) { _mm256_movedup_pd(number), _mm256_unpackhi_pd(number, number) };
+	return (__m256dd) { _mm256_broadcast_sd(&pointer->hi), _mm256_broadcast_sd(&pointer->lo) };
 }
 
 FPPLUS_STATIC_INLINE __m256dd _mm256_loaddeinterleave_pdd(
