@@ -171,7 +171,7 @@ class Configuration:
                 isaflag = {
                     "haswell": "-march=core-avx2",
                     "broadwell": "-march=broadwell",
-                    "skylake": "-mavx2",
+                    "skylake": "-mavx2 -mfma",
                     "bulldozer": "-march=bdver1",
                     "piledriver": "-march=bdver2",
                     "steamroller": "-march=bdver3",
