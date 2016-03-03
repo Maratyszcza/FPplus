@@ -42,6 +42,10 @@ FPplus was originally developed for a research project on instructions to accele
 #include <fpplus.h>
 ```
 
+## Publications
+
+Marat Dukhan, Richard Vuduc and Jason Riedy ["Wanted: Floating-Point Add Round-off Error instruction"](http://arxiv.org/abs/1603.00491). arXiv preprint 1603.00491 (2016)
+
 Acknowledgements
 ----------------
 
