@@ -25,7 +25,7 @@ def get_program_info(program, arguments, use_stdout=True):
 def detect_compiler(program):
     banner = get_program_info(program, "--version")
     if banner:
-        identification = banner.splitlines()[0]
+        identification = banner.splitlines()[0].decode("utf-8")
         import re
         intel_match = re.match(r"(icc|icpc) \(ICC\) (\d+(:?\.\d+)+)", identification)
         if intel_match:
