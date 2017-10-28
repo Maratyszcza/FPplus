@@ -1,5 +1,6 @@
 #!/usr/bin/env python
-
+from __future__ import division
+        
 import sys
 import os
 import argparse
@@ -48,14 +49,14 @@ void ddgemm{mr}x{nr}(size_t k,
 	doubledouble c[restrict static {mr}*{nr}])
 {{""".format(mr=mr, nr=nr))
 				with CodeBlock():
-					for m in range(mr / simd.width):
+					for m in range(mr // simd.width):
 						impl.line("{ddvec} {vars};".
 							format(ddvec=simd.ddvec,
 								vars=", ".join("va{m}b{n} = {ddzero}()".format(m=m, n=n, ddzero=simd.ddzero) for n in range(nr))))
 
 					impl.line("do {")
 					with CodeBlock():
-						for m in range(mr / simd.width):
+						for m in range(mr // simd.width):
 							impl.line("const {ddvec} va{m} = {{ {dload}(a + {index_hi}), {dload}(a + {index_lo}) }};"
 								.format(ddvec = simd.ddvec, m=m, dload=simd._dload,
 									index_hi=(2*m)*simd.width, index_lo=(2*m+1)*simd.width))
@@ -63,7 +64,7 @@ void ddgemm{mr}x{nr}(size_t k,
 
 						for n in range(nr):
 							impl.line("{ddvec} vb{n} = {ddbroadcast}(b+{n});".format(ddvec=simd.ddvec, ddbroadcast=simd.ddbroadcast, n=n))
-							for m in range(mr / simd.width):
+							for m in range(mr // simd.width):
 								vanbm = "va{m}b{n}".format(m=m, n=n)
 								impl.line(vanbm + " = " + simd.ddadd(vanbm, simd.ddmul("va" + str(m), "vb" + str(n))) + ";")
 							impl.line()
@@ -73,18 +74,18 @@ void ddgemm{mr}x{nr}(size_t k,
 					impl.line("} while (--k);")
 					impl.line()
 
-					for m in range(mr / simd.width):
+					for m in range(mr // simd.width):
 						for n in range(nr):
 							impl.line("{ddvec} vc{m}{n} = {ddloaddeinterleave}(&c[{n}*{mr}+{m}*{simd_width}]);".format(
 								ddvec=simd.ddvec, m=m, n=n, mr=mr, simd_width=simd.width, ddloaddeinterleave=simd.ddloaddeinterleave))
 					impl.line()
 
-					for m in range(mr / simd.width):
+					for m in range(mr // simd.width):
 						for n in range(nr):
 							impl.line("vc{m}{n} = {ddadd}(vc{m}{n}, va{m}b{n});".format(m=m, n=n, ddadd=simd._ddadd))
 					impl.line()
 
-					for m in range(mr / simd.width):
+					for m in range(mr // simd.width):
 						for n in range(nr):
 							impl.line("{ddinterleavestore}(&c[{n}*{mr}+{m}*{simd_width}], vc{m}{n});".format(
 								m=m, n=n, mr=mr, simd_width=simd.width, ddinterleavestore=simd.ddinterleavestore))
